@@ -1,0 +1,1 @@
+A collection of theorems and results, for personal reference.
