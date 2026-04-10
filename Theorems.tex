@@ -81,22 +81,22 @@
 
 
 \begin{definition}[Relation]
-    Let $A$ be a set. A \textit{relation} $R$ on $A$ is a subset $R\subset A\times A$. For each $x,y\in A$, we denote $xRy \iff (x,y)\in R$. 
+    Let $A$ be a collection. A \textit{relation} $R$ on $A$ is a subset $R\subset A\times A$. For each $x,y\in A$, we denote $xRy \iff (x,y)\in R$. 
 \end{definition}
 \begin{definition}[Transitive Relation]
-    Let $R$ be a relation on a set $A$. $R$ is called \textit{transitive} if, for each $x,y,z\in A$, if $xRy$ and $yRz$, then $xRz$.   
+    Let $R$ be a relation on a collection $A$. $R$ is called \textit{transitive} if, for each $x,y,z\in A$, if $xRy$ and $yRz$, then $xRz$.   
 \end{definition}
 \begin{definition}[Symmetric Relation]
-    Let $R$ be a relation on a set $A$. $R$ is called \textit{symmetric} if, for each $x,y\in A$, if $xRy$, then $yRx$.   
+    Let $R$ be a relation on a collection $A$. $R$ is called \textit{symmetric} if, for each $x,y\in A$, if $xRy$, then $yRx$.   
 \end{definition}
 \begin{definition}[Reflexive Relation]
-    Let $R$ be a relation on a set $A$. $R$ is called \textit{reflexive} if, for each $x\in A$, if $xRx$.   
+    Let $R$ be a relation on a collection $A$. $R$ is called \textit{reflexive} if, for each $x\in A$, if $xRx$.   
 \end{definition}
 \begin{definition}[Equivalence Relation]
-    Let $R$ be a relation on a set $A$. $R$ is called an \textit{equivalence relation} if it is transitive, symmetric, and reflexive.
+    Let $R$ be a relation on some collection. $R$ is called an \textit{equivalence relation} if it is transitive, symmetric, and reflexive.
 \end{definition}
 \begin{definition}[Equivalence Class]
-    Let $R$ be an equivalence relation on a set $A$, and $a\in A$. The set $[a]=\{x\in A:xRa\}$ is called the \textit{equivalence class} of $a$.
+    Let $R$ be an equivalence relation on a collection $A$, and $a\in A$. The set $[a]_R=\{x\in A:xRa\}$ is called the \textit{equivalence class} of $a$. We sometimes simply write $[a]$ if the relation is understood.
 \end{definition}
 
 
@@ -127,6 +127,13 @@
 \end{definition}
 \begin{definition}[Pre-Image]
     Let $f:A\rightarrow B$ be a function. Let $C\subset B$ be a subset. The set $f^{-1}(C):=\{x\in A : f(x)\in C\}$ is called the \textit{pre-image} of $C$.
+\end{definition}
+
+\begin{definition}[Cardinality]
+    Let $U$ be the collection of all sets. Define the relation $\sim$ on $U$ so that $A \sim B\iff \exists f:A\rightarrow B$ so that $f$ is bijective. The \textit{cardinality} of a set $X$ is the equivalence class $[X]_\sim$. The cardinality of $\phi$ is denoted as 0.
+\end{definition}
+\begin{definition}[Singleton]
+    Let $A$ be a set. $A$ is called a \textit{singleton} if it has the same cardinality as the set $\{\phi\}$. The cardinality of a singleton is denoted as 1.
 \end{definition}
 
 \newpage
