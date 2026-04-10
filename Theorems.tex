@@ -9,7 +9,7 @@
 \usepackage{nameref}
 \usepackage[title,titletoc]{appendix}
 \usepackage[margin=0.75in]{geometry}
-\usepackage[fontsize=14pt]{scrextend}
+\usepackage[fontsize=11pt]{scrextend}
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[subsection]
 
@@ -50,12 +50,54 @@
 \setcounter{subsection}{-1}
 \subsection{Definitions}
 \begin{definition}[Set]
-    A \textbf{set} is an unordered collection of items; the items are usually called elements.
+    A \textit{set} is an unordered collection of items; the items are usually called elements. 
 \end{definition}
 \begin{definition}[Subset]
-    Let $X$ be a set. A set $A$ which satisfies $x\in A \implies x\in X$ is called a \textbf{subset} of $X$. We write $A\subset X$ to mean $A$ is a subset of $X$.
+    Let $X$ be a set. A set $A$ which satisfies $x\in A \implies x\in X$ is called a \textit{subset} of $X$. We write $A\subset X$ to mean $A$ is a subset of $X$.
 \end{definition}
-\begin{definition}[Power Set] Let $X$ be a set. The \textbf{power set} of $X$, denoted $\mathcal{P}(X)$ is defined to be the set of all subsets of $X$.
+\begin{definition}[Power Set] Let $X$ be a set. The \textit{power set} of $X$, denoted $\mathcal{P}(X)$ is defined to be the set of all subsets of $X$.
+\end{definition}
+\begin{definition}[Empty Set]
+    The set with no elements is called the \textit{empty set}, usually denoted $\phi$.
+\end{definition}
+\begin{definition}[Ordered List]
+    An \textit{ordered list} is a collection of items specified by an order, with possible repetition. An ordered list of $n$ elements can be called an $n$-tuple. An ordered list of $2$ elements is sometimes called a pair.
+\end{definition}
+\begin{definition}[Cartesian Product]
+    Let $A,B$ be sets. The \textit{Cartesian product}, or simply \textit{product}, of $A$ and $B$ is the set $A\times B := \{(a,b) : a\in A, b\in B\}$.
+\end{definition}
+\begin{definition}[Union]
+    Let $A,B$ be sets. The \textit{union} of $A$ and $B$ is the set $A\cup B:=\{x:x\in A \text{ or } x\in B\}$.
+\end{definition}
+\begin{definition}[Intersection]
+    Let $A,B$ be sets. The \textit{intersection} of $A$ and $B$ is the set $A\cap B:=\{x:x\in A \text{ and } x\in B\}$.
+\end{definition}
+\begin{definition}[Set Difference]
+    Let $A$ be a set, and $B\subset A$ a subset. The \textit{set difference} is the set of elements in $A$ but not $B$, denoted $A \setminus B:=\{a\in A: a \notin B \}$ .
+\end{definition}
+
+
+
+\begin{definition}[Function, Map]
+    Let $A$, $B$ be non-empty sets. A \textit{function} or \textit{map} $f$ from $A$ to $B$ is a rule that assigns to each element $a\in A$ a unique element $b\in B$. $A$ is called the \textit{domain} of the function, and $B$ the \textit{codomain}. The signature of the function is typically denoted $f:A\rightarrow B$.
+\end{definition}
+\begin{definition}[Injection]
+    Let $f:A\rightarrow B$ be a map. $f$ is an \textit{injection}, and said to be \textit{injective} if, for any $x,y\in A$, $f(x)=f(y)\implies x=y$.
+\end{definition}
+\begin{definition}[Surjection]
+    Let $f:A\rightarrow B$ be a map. $f$ is a \textit{surjection}, and said to be \textit{surjective} if, for every $y\in B$, there is some $x\in X$ so that $y=f(x)$.
+\end{definition}
+\begin{definition}[Bijection]
+    Let $f:A\rightarrow B$ be a map. $f$ is a \textit{bijection}, and said to be \textit{bijective} if it is injective and surjective.
+\end{definition}
+
+
+
+\begin{definition}[Image]
+    Let $f:A\rightarrow B$ be a function. The set $\text{Im} f:=\{f(x): x\in X\}$ is called the \textit{image} of $f$.
+\end{definition}
+\begin{definition}[Pre-Image]
+    Let $f:A\rightarrow B$ be a function. Let $C\subset B$ be a subset. The set $f^{-1}(C):=\{x\in A : f(x)\in C\}$ is called the \textit{pre-image} of $C$.
 \end{definition}
 
 \newpage
@@ -65,12 +107,25 @@
 \setcounter{subsection}{-1}
 \subsection{Definitions}
 
-    \begin{definition}[Topology]\label{sub:topology} Let $X$ be a set. A subset $\tau$ of the power set $\mathcal{P}(X)$ is called a \textbf{topology} on $X$ if the following are true:
+    \begin{definition}[Topology]\label{sub:topology} Let $X$ be a set. A subset $\tau$ of the power set $\mathcal{P}(X)$ is called a \textit{topology} on $X$ if the following are true:
         \begin{itemize}
             \item $\phi,X \in \tau$
             \item Any arbitrary union of elements of $\tau$ belongs to $\tau$
-            \item Any finite intersection of elements of $\tau$ belongs to $\tau$
+            \item Any finite intersection of elements of $\tau$ belongs to $\tau$.
         \end{itemize}
+    \end{definition}
+
+    \begin{definition}[Topological Space]
+        Let $X$ be a set, and $\tau$ a topology on $X$. The pair $(X,\tau)$ is called a \textit{topological space}.        
+    \end{definition}
+    \begin{definition}[Open Set]
+        Let $(X,\tau)$ be a topological space. A subset $U\subset X$ is called \textit{open} in $X$ if $U\in \tau$.
+    \end{definition}
+    \begin{definition}[Closed Set]
+        Let $(X,\tau)$ be a topological space. A subset $U\subset X$ is called \textit{open} in $X$ if the set $X \setminus U$ is  open.
+    \end{definition}
+    \begin{definition}[Continuous Map]
+        Let $(X,\tau_1),(Y,\tau_2)$ be topological spaces. A map $f:X\rightarrow Y$ is called \textit{continuous} if the pre-image of any open set in $Y$ is an open set of $X$.
     \end{definition}
 
 \subsection{Point Set Topology}
