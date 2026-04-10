@@ -1,32 +1,87 @@
 \documentclass{article}
-\usepackage{graphicx} % Required for inserting images
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{amssymb}
 \usepackage{mathtools}% http://ctan.org/pkg/mathtools
 \usepackage{hyperref}
-\usepackage{tikz-cd}
 \usepackage{caption}
+\usepackage{nameref}
+\usepackage[title,titletoc]{appendix}
 \usepackage[margin=0.75in]{geometry}
-
-\tikzcdset{
-    arrow style=tikz,
-    diagrams={>={Straight Barb[scale=1]}}
-}
+\usepackage[fontsize=14pt]{scrextend}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[subsection]
 
 \title{Unlimited Theorems}
 \date{}
 
 \begin{document}
 \maketitle
-\section*{Topology}
-\section*{Algebra}
-\section*{Analysis}
-\section*{Physics}
-\section*{Applied Math and Statistics}
+\begin{abstract}
+    \noindent
+    Theorems and results have been organized into sections and subsections. Definitions, if needed, are provided at the beginning of each section and subsection. A subsection has final index 0 if and only if it is a subsection of definitions. For example, subsections 5.0, 3.3.0, and 0.0 are definition subsections, but 2.3 and 1.4.1 are not.
+    \newline
+    \newline
+    \noindent    
+    If a term is defined more than once in this document, the definition provided at most specific layer will apply. For example, if section 5.0 defines ``ring" to not necessarily be commutative, but 5.3.0 declares a ``ring" to be commutative with respect to multiplication, then in all theorems 5.3.X, ``ring" will mean commutative ring, unless further overridden. Mentions of rings in 5.2, on the other hand, will not imply commutativity unless the definition is overridden.
+    \newline
+    \newline
+    \noindent
+    If a term is used but not defined within a section or subsection, the definition that is ``outer-most'' applies. For example, if the term ``homomorphism'' is encountered in section 4.1, but is defined at 2.1.0, 3.0, and 5.2.3.0, then the definition in 3.0 applies. If there is no single ``outer-most'' definition, then the earliest of the tied definitions applies. For example, if the same term is defined in 2.0, 3.0, and 4.1.0, then its use in section 5 will correspond to the definition in 2.0.
+    \newline
+    \newline
+    \noindent
+    An appendix is provided at the end of the document listing every term, along with references to each of its definitions, in alphabetical order.
+
+\end{abstract}
+\newpage
+
+\tableofcontents
 
 
 
+
+
+\newpage
+
+\section{Logic}
+
+\setcounter{subsection}{-1}
+\subsection{Definitions}
+\begin{definition}[Set]
+    A \textbf{set} is an unordered collection of items; the items are usually called elements.
+\end{definition}
+\begin{definition}[Subset]
+    Let $X$ be a set. A set $A$ which satisfies $x\in A \implies x\in X$ is called a \textbf{subset} of $X$. We write $A\subset X$ to mean $A$ is a subset of $X$.
+\end{definition}
+\begin{definition}[Power Set] Let $X$ be a set. The \textbf{power set} of $X$, denoted $\mathcal{P}(X)$ is defined to be the set of all subsets of $X$.
+\end{definition}
+
+\newpage
+
+
+\section{Topology}
+\setcounter{subsection}{-1}
+\subsection{Definitions}
+
+    \begin{definition}[Topology]\label{sub:topology} Let $X$ be a set. A subset $\tau$ of the power set $\mathcal{P}(X)$ is called a \textbf{topology} on $X$ if the following are true:
+        \begin{itemize}
+            \item $\phi,X \in \tau$
+            \item Any arbitrary union of elements of $\tau$ belongs to $\tau$
+            \item Any finite intersection of elements of $\tau$ belongs to $\tau$
+        \end{itemize}
+    \end{definition}
+
+\subsection{Point Set Topology}
+\ref{sub:topology}
+
+
+\newpage
+\renewcommand{\appendixpagename}{Appendix}
+\appendixpage
+\appendix
+\section{Definition Index}
+\section{Notation}
 
 \end{document}
