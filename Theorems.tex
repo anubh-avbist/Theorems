@@ -12,6 +12,8 @@
 \usepackage[fontsize=11pt]{scrextend}
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[subsection]
+\theoremstyle{theorem}
+\newtheorem{theorem}{Theorem}[subsection]
 
 \title{Unlimited Theorems}
 \date{}
@@ -75,8 +77,11 @@
 \begin{definition}[Set Difference]
     Let $A$ be a set, and $B\subset A$ a subset. The \textit{set difference} is the set of elements in $A$ but not $B$, denoted $A \setminus B:=\{a\in A: a \notin B \}$ .
 \end{definition}
+\begin{definition}[Disjoint]
+    Let $A,B$ be sets. $A$ and $B$ are called \textit{disjoint} if $A\cap B=\phi$.
+\end{definition}
 \begin{definition}[Cover]
-    Let $X$ be a set, and $B=\{U_i\}$ be a collection of sets. $B$ is called a \textit{cover} of $X$ if $X\subset \bigcup \limits_{i}U_i$.
+    Let $X$ be a set, and $B=\{U_i\}$ be a collection of sets. $B$ is called a \textit{cover} of $X$ if $X\subset \bigcup \limits_{i}U_i$. A subset $C\subset B$ that is also a cover is called a \textit{subcover}.
 \end{definition}
 
 
@@ -135,6 +140,15 @@
 \begin{definition}[Singleton]
     Let $A$ be a set. $A$ is called a \textit{singleton} if it has the same cardinality as the set $\{\phi\}$. The cardinality of a singleton is denoted as 1.
 \end{definition}
+\begin{definition}[Natural Numbers]
+    Define a map $S$ which sends a set $X$ to the set $X\cup \{X\}$. We say a set $U$ is a \textbf{successor} of $X$ if and only if it is either $S(X)$ or the successor of a successor of $X$. The \textbf{natural numbers} are given by the set $\mathbb{N} = \{\text{Cardinalities of successors of } \phi\}$. The chain of subsets $S(\phi)\subset S(S(\phi))\subset S(S(S\phi))\ldots$ can be denoted the list $1,2,3\ldots$. 
+\end{definition}
+\begin{definition}[Finite]
+    Let $A$ be a set. $A$ is called \textbf{finite} if it is empty or a member of some $n\in \mathbb{N}$.
+\end{definition}
+\begin{definition}[Infinite]
+    Let $A$ be a set. $A$ is called \textbf{infinite} if it is not finite.
+\end{definition}
 
 \newpage
 
@@ -160,8 +174,14 @@
     \begin{definition}[Closed Set]
         Let $(X,\tau)$ be a topological space. A subset $U\subset X$ is called \textit{open} in $X$ if the set $X \setminus U$ is  open.
     \end{definition}
+    \begin{definition}[Neighborhood]
+        Let $X$ be a topological space, and $x\in X$ a point. A subset $N\subset X$ is called a \textit{neighborhood} of $x$ if there is some subset $U\subset N$ so that $U$ is open and $x\in U$.
+    \end{definition}
     \begin{definition}[Subspace Topology]
         Let $(X,\tau_1)$ be a topological space, and $Y\subset X$. The \textit{subspace topology} on $Y$ is the set $\tau_2=\{U\cap Y : U \in \tau_1\}$. The pair $(Y,\tau_2)$ is called a \textit{subspace} of $X$.
+    \end{definition}
+    \begin{definition}[Open Cover]
+        Let $A$ be a topoloigcal space. A cover $B$ of $A$ is called an \textit{open cover} if every set in it is open.
     \end{definition}
     \begin{definition}[Continuous Map]
         Let $(X,\tau_1),(Y,\tau_2)$ be topological spaces. A map $f:X\rightarrow Y$ is called \textit{continuous} if the pre-image of any open set in $Y$ is an open set of $X$.
@@ -169,10 +189,21 @@
     \begin{definition}[Homeomorphism]
         Let $f:X\rightarrow Y$ be a continuous bijection. Then, $f$ is called a \textit{homeomorphism} if its inverse is continuous. 
     \end{definition}
+    \begin{definition}[Compact Space]
+        Let $A\subset X$ be a subspace. $A$ is called \textit{compact} if for every open cover $B$ of $A$, there is an open subcover $C\subset B$ such that $C$ is finite.
+    \end{definition}
+    \begin{definition}[Hausdorff Space]
+        Let $X$ be a topological space. $X$ is called \textit{hausdorff} if, for any $x,y\in X$, if $x\neq y$, then there exist neighborhoods $U$ of $x$ and $V$ of $y$ so that $U$ and $V$ are disjoint.
+    \end{definition}
     
 
+\newpage
 \subsection{Point Set Topology}
-\ref{sub:topology}
+\begin{theorem}
+    
+\end{theorem}
+\noindent
+
 
 
 \newpage
