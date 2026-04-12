@@ -47,10 +47,11 @@
 
 \newpage
 
-\section{Logic, Set Theory}
+\section{Logic}
 
 \setcounter{subsection}{-1}
 \subsection{Definitions}
+\subsubsection*{Basic Set Theory}
 \begin{definition}[Set]
     A \textit{set} is an unordered collection of items; the items are usually called elements. 
 \end{definition}
@@ -120,6 +121,9 @@
 \end{definition}
 \begin{definition}[Inverse]
     Let $f:A\rightarrow B$ be a bijection. The map $f^{-1}:B\rightarrow A$ is called the \textit{inverse} of $f$ is, for each $a\in A, b\in B$, $f(f^{-1}(b))=b$ and $f^{-1}(f(a))=a$.    
+\end{definition}
+\begin{definition}[Operation]
+    Let $A$ be a set. A function $f$ with signature $f:A\times A \rightarrow A$ is called an \textit{operation} or \textit{operator} on $A$. The evaluation $f(x,y)$ is often denoted $xfy$, or simply $xy$.
 \end{definition}
 
 
@@ -195,15 +199,24 @@
     \begin{definition}[Hausdorff Space]
         Let $X$ be a topological space. $X$ is called \textit{hausdorff} if, for any $x,y\in X$, if $x\neq y$, then there exist neighborhoods $U$ of $x$ and $V$ of $y$ so that $U$ and $V$ are disjoint.
     \end{definition}
-    
-
-\newpage
 \subsection{Point Set Topology}
 \begin{theorem}
-    
+    Let $f:A\rightarrow B$ be a continuous map. $K\subset B$ is closed if and only if $f^{-1}(K)$ is closed.
 \end{theorem}
-\noindent
 
+
+\newpage
+\section{Algebra}
+\setcounter{subsection}{-1}
+\subsection{Definitions}
+    Let $G$ be a set. Let $\circ$ be an operation on $G$. The pair $(G,\circ)$ is called a \textit{group} if the following are true:
+    \begin{itemize}
+        \item There is an element $e \in G$ so that $e\circ g = g \circ e = g$ for any $g\in G$, called the \textit{identity}
+        \item For any $g\in G$, there exists an \textit{inverse} $g^{-1}\in G$ so that $g\circ g^{-1}=g^{-1}\circ g = e$
+        \item For any $a,b,c\in G$, $(a\circ b)\circ c=a\circ(b\circ c)$.
+    \end{itemize}
+    The operation $\circ$ is often omitted.
+    
 
 
 \newpage
