@@ -12,7 +12,6 @@
 \usepackage[fontsize=11pt]{scrextend}
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[subsection]
-\theoremstyle{theorem}
 \newtheorem{theorem}{Theorem}[subsection]
 
 \title{Unlimited Theorems}
@@ -58,6 +57,9 @@
 \begin{definition}[Subset]
     Let $X$ be a set. A set $A$ which satisfies $x\in A \implies x\in X$ is called a \textit{subset} of $X$. We write $A\subset X$ to mean $A$ is a subset of $X$.
 \end{definition}
+\begin{definition}[Set Equality]
+    Two sets $A,B$ are \textit{equal} if $A\subset B$ and $B\subset A$, denoted $A=B$.
+\end{definition}
 \begin{definition}[Power Set] Let $X$ be a set. The \textit{power set} of $X$, denoted $\mathcal{P}(X)$ is defined to be the set of all subsets of $X$.
 \end{definition}
 \begin{definition}[Empty Set]
@@ -77,6 +79,9 @@
 \end{definition}
 \begin{definition}[Set Difference]
     Let $A$ be a set, and $B\subset A$ a subset. The \textit{set difference} is the set of elements in $A$ but not $B$, denoted $A \setminus B:=\{a\in A: a \notin B \}$ .
+\end{definition}
+\begin{definition}[Complement]
+    Let $B\subset A$ be a subset. The set $B^{\mathsf{c}}=A\setminus B$ is called the \textit{complement} of $B$ in $A$.
 \end{definition}
 \begin{definition}[Disjoint]
     Let $A,B$ be sets. $A$ and $B$ are called \textit{disjoint} if $A\cap B=\phi$.
@@ -127,10 +132,6 @@
 \end{definition}
 
 
-
-
-
-
 \begin{definition}[Image]
     Let $f:A\rightarrow B$ be a function. The set $\text{Im} f:=\{f(x): x\in X\}$ is called the \textit{image} of $f$.
 \end{definition}
@@ -153,12 +154,18 @@
 \begin{definition}[Infinite]
     Let $A$ be a set. $A$ is called \textbf{infinite} if it is not finite.
 \end{definition}
-
+\subsection{Set-Map Compatibility}
+\begin{theorem}
+    Let $f:A\rightarrow B$, $X\subset A$. Then, $f(X^\mathsf{c})=f(X)^\mathsf{c}$.
+\end{theorem}
+\noindent
 \newpage
 
 
 \section{Topology}
 \setcounter{subsection}{-1}
+
+
 \subsection{Definitions}
 
     \begin{definition}[Topology]\label{sub:topology} Let $X$ be a set. A subset $\tau$ of the power set $\mathcal{P}(X)$ is called a \textit{topology} on $X$ if the following are true:
@@ -199,30 +206,65 @@
     \begin{definition}[Hausdorff Space]
         Let $X$ be a topological space. $X$ is called \textit{hausdorff} if, for any $x,y\in X$, if $x\neq y$, then there exist neighborhoods $U$ of $x$ and $V$ of $y$ so that $U$ and $V$ are disjoint.
     \end{definition}
+    \begin{definition}[Homotopy]
+        Let $f,g:X\rightarrow Y$ be continuous functions. A \textit{homotopy} between $f$ and $g$ is a continuous map $H:X\times [0,1]\rightarrow Y$ satisfying $H(x,0)=f(x)$ and $H(x,1)=g(x)$ for all $x\in X$.
+    \end{definition}
+
+
 \subsection{Point Set Topology}
 \begin{theorem}
-    Let $f:A\rightarrow B$ be a continuous map. $K\subset B$ is closed if and only if $f^{-1}(K)$ is closed.
+    Let $f:A\rightarrow B$ be a map between topological spaces. The following are equivalent:
+    \begin{itemize}
+        \item $f$ is continuous.
+        \item $K\subset B$ is closed if and only if $f^{-1}(K)$ is closed.
+    \end{itemize}
 \end{theorem}
+
+\begin{theorem}
+    Let $X$ be a topological space. The following are equivalent:
+    \begin{itemize}
+        \item $U\subset X$ is an open set.
+        \item For each $a\in U$, there is some $K\subset U$ so that $a\in K$ and $K$ is open.
+        \item $U$ is a neighborhood of all of its points.
+    \end{itemize}
+\end{theorem}
+
+\begin{theorem}
+    Let $X$ be compact and $Y$ be hausdorff. A continuous bijection $f:X\rightarrow Y$ is a homeomorphism.
+\end{theorem}
+    \noindent
+    \textbf{Proof.} It suffices to show that $f^{-1}$ is continuous. Let $A\subset X$ be an open set. Let $y\in f(A)$. 
 
 
 \newpage
-\section{Algebra}
+
+
+\section{Abstract Algebra}
 \setcounter{subsection}{-1}
 \subsection{Definitions}
+
+\begin{definition}
     Let $G$ be a set. Let $\circ$ be an operation on $G$. The pair $(G,\circ)$ is called a \textit{group} if the following are true:
     \begin{itemize}
-        \item There is an element $e \in G$ so that $e\circ g = g \circ e = g$ for any $g\in G$, called the \textit{identity}
+        \item There exists an element $e \in G$ so that $e\circ g = g \circ e = g$ for any $g\in G$, called the \textit{identity}
         \item For any $g\in G$, there exists an \textit{inverse} $g^{-1}\in G$ so that $g\circ g^{-1}=g^{-1}\circ g = e$
         \item For any $a,b,c\in G$, $(a\circ b)\circ c=a\circ(b\circ c)$.
     \end{itemize}
     The operation $\circ$ is often omitted.
+\end{definition}
     
+
+\newpage
+\section{Representation Theory}
+\setcounter{subsection}{-1}
+\subsection{Definitions}
 
 
 \newpage
 \renewcommand{\appendixpagename}{Appendix}
 \appendixpage
 \appendix
+
 \section{Definition Index}
 \section{Notation}
 

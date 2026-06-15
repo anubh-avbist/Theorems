@@ -1,0 +1,37 @@
+\documentclass{article}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathtools}% http://ctan.org/pkg/mathtools
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{nameref}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\linespread{1.3} % Roughly 1.5 spacing
+\usepackage[margin=0.75in]{geometry}
+\usepackage[fontsize=11pt]{scrextend}
+
+\title{MAT 324 Preparation}
+\date{}
+
+\begin{document}
+\section*{Chapter 1}
+\textbf{Theorem 1. } let $\rho:G\rightarrow GL(V)$ be a representation of $G$ in $V$, and let $W\subset V$ be a vector subspace of $V$ stable under $G$. Then there exists a complement $W^0$ of $W$ in $V$ which is stable under $G$.
+\newline
+\newline
+\textit{Proof.} Let $W^0$ be a complement of $W$ in $V$, and let $p:V\rightarrow V$ be the projection of $V$ onto $W$ corresponding to the decomposition $V=W\oplus W^0$. Let $s\in G$. We define a new projection $p^0:V\rightarrow V$:
+\begin{equation*}
+    p^0v:=\frac1{|G|}\sum_{s\in G}\rho_s p\rho_s^{-1}v.
+\end{equation*}
+Notice that $p$ maps to $W$ and $W$ is G-invariant, so $\rho_sp$ sends elements to $W$. If $w\in W$, then $\rho_s^{-1}w\in W$. Hence,
+\begin{equation*}
+    p^0w=\frac1{|G|}\sum_{s\in G}\rho_s p\rho_s^{-1}w=\frac1{|G|}\sum_{s\in G}\rho_s \rho_s^{-1}w=w.
+\end{equation*} 
+So, $p^0$ is a projection of $V$ to $W$.
+\newline
+\newline
+Let $x\in W^0$. Then, $p^0\rho_s x=\frac1{|G|}\sum_{s\in G}\rho_s p\rho_s^{-1}\rho_s x=\frac1{|G|}\sum_{s\in G}\rho_s px=0$. Since $p^0(\rho_s x)=0$ for any $x\in W^0$, we have $\rho_s x\in W^0$. Hence, $W^0$ is stable under $G$. \qed
+
+\end{document}
