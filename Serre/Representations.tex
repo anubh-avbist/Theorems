@@ -21,11 +21,11 @@
 \textbf{Theorem 1. } let $\rho:G\rightarrow GL(V)$ be a representation of $G$ in $V$, and let $W\subset V$ be a vector subspace of $V$ stable under $G$. Then there exists a complement $W^0$ of $W$ in $V$ which is stable under $G$.
 \newline
 \newline
-\textit{Proof.} Let $W^0$ be a complement of $W$ in $V$, and let $p:V\rightarrow V$ be the projection of $V$ onto $W$ corresponding to the decomposition $V=W\oplus W^0$. Let $s\in G$. We define a new projection $p^0:V\rightarrow V$:
+\textit{Proof.} Let $W^0$ be a complement of $W$ in $V$, and let $p:V\rightarrow V$ be the projection of $V$ onto $W$ corresponding to the decomposition $V=W\oplus W^0$. We define a new projection $p^0:V\rightarrow V$:
 \begin{equation*}
     p^0v:=\frac1{|G|}\sum_{s\in G}\rho_s p\rho_s^{-1}v.
 \end{equation*}
-Notice that $p$ maps to $W$ and $W$ is G-invariant, so $\rho_sp$ sends elements to $W$. If $w\in W$, then $\rho_s^{-1}w\in W$. Hence,
+Notice that $p$ maps to $W$ and $W$ is stable under $G$, so $\rho_sp$ sends elements to $W$. If $w\in W$, then $\rho_s^{-1}w\in W$. Hence,
 \begin{equation*}
     p^0w=\frac1{|G|}\sum_{s\in G}\rho_s p\rho_s^{-1}w=\frac1{|G|}\sum_{s\in G}\rho_s \rho_s^{-1}w=w.
 \end{equation*} 
