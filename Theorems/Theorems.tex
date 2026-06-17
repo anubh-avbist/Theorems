@@ -39,18 +39,12 @@
 \newpage
 
 \tableofcontents
-
-
-
-
-
 \newpage
 
 \section{Logic}
 
 \setcounter{subsection}{-1}
 \subsection{Definitions}
-\subsubsection*{Basic Set Theory}
 \begin{definition}[Set]
     A \textit{set} is an unordered collection of items; the items are usually called elements. 
 \end{definition}
@@ -85,9 +79,6 @@
 \end{definition}
 \begin{definition}[Disjoint]
     Let $A,B$ be sets. $A$ and $B$ are called \textit{disjoint} if $A\cap B=\phi$.
-\end{definition}
-\begin{definition}[Cover]
-    Let $X$ be a set, and $B=\{U_i\}$ be a collection of sets. $B$ is called a \textit{cover} of $X$ if $X\subset \bigcup \limits_{i}U_i$. A subset $C\subset B$ that is also a cover is called a \textit{subcover}.
 \end{definition}
 
 
@@ -149,10 +140,10 @@
     Define a map $S$ which sends a set $X$ to the set $X\cup \{X\}$. We say a set $U$ is a \textbf{successor} of $X$ if and only if it is either $S(X)$ or the successor of a successor of $X$. The \textbf{natural numbers} are given by the set $\mathbb{N} = \{\text{Cardinalities of successors of } \phi\}$. The chain of subsets $S(\phi)\subset S(S(\phi))\subset S(S(S\phi))\ldots$ can be denoted the list $1,2,3\ldots$. 
 \end{definition}
 \begin{definition}[Finite]
-    Let $A$ be a set. $A$ is called \textbf{finite} if it is empty or a member of some $n\in \mathbb{N}$.
+    Let $A$ be a set. $A$ is called \textit{finite} if it is empty or a member of some $n\in \mathbb{N}$.
 \end{definition}
 \begin{definition}[Infinite]
-    Let $A$ be a set. $A$ is called \textbf{infinite} if it is not finite.
+    Let $A$ be a set. $A$ is called \textit{infinite} if it is not finite.
 \end{definition}
 \subsection{Set-Map Compatibility}
 \begin{theorem}
@@ -164,8 +155,6 @@
 
 \section{Topology}
 \setcounter{subsection}{-1}
-
-
 \subsection{Definitions}
 
     \begin{definition}[Topology]\label{sub:topology} Let $X$ be a set. A subset $\tau$ of the power set $\mathcal{P}(X)$ is called a \textit{topology} on $X$ if the following are true:
@@ -190,6 +179,9 @@
     \end{definition}
     \begin{definition}[Subspace Topology]
         Let $(X,\tau_1)$ be a topological space, and $Y\subset X$. The \textit{subspace topology} on $Y$ is the set $\tau_2=\{U\cap Y : U \in \tau_1\}$. The pair $(Y,\tau_2)$ is called a \textit{subspace} of $X$.
+    \end{definition}
+    \begin{definition}[Cover]
+        Let $X$ be a set, and $B=\{U_i\}$ be a collection of sets. $B$ is called a \textit{cover} of $X$ if $X\subset \bigcup \limits_{i}U_i$. A subset $C\subset B$ that is also a cover of $X$ is called a \textit{subcover}.
     \end{definition}
     \begin{definition}[Open Cover]
         Let $A$ be a topoloigcal space. A cover $B$ of $A$ is called an \textit{open cover} if every set in it is open.
@@ -216,7 +208,7 @@
     Let $f:A\rightarrow B$ be a map between topological spaces. The following are equivalent:
     \begin{itemize}
         \item $f$ is continuous.
-        \item $K\subset B$ is closed if and only if $f^{-1}(K)$ is closed.
+        \item If $K\subset B$ is closed then $f^{-1}(K)$ is closed.
     \end{itemize}
 \end{theorem}
 
@@ -230,20 +222,46 @@
 \end{theorem}
 
 \begin{theorem}
+    Let $K$ be a compact space. A closed subset $A\subset K$ is compact.
+\end{theorem}
+    \noindent
+    \textbf{Proof.} Let $B$ be an open cover of $A$. Since $A$ is closed, $A^c=K\setminus A$ is open, and $B\cup A^c$ is a cover of $K$. Since $K$ is compact, we can find a finite subcover $V\subset B\cup A^c$ of $K$. If $V$ does not contain $A^c$, then $V\subset B$, and we are finished. Otherwise, let $V'$ be the collection formed by removing $A^c$ from $V$. Since $A^c$ had no intersection with $A$, we have a finite subcover $V'\subset B$ of $K$. \qed 
+
+\begin{theorem}
+    The continuous image of a compact set is comapct.
+\end{theorem}
+    \noindent
+    \textbf{Proof.} Let $K\subset X$ be compact and $f:X\rightarrow Y$ be a continuous map. Let $\mathcal{U}=\{U_\alpha\}_{\alpha\in I}$ be an open cover of $f(K)$ in $Y$. Then, $\{V_\alpha\}_{\alpha\in I}$ is an open cover of $K$, where $V_\alpha:=f^{-1}(U_\alpha)$. Since $K$ is compact, let $V_1,...,V_n$ be a finite subcover of $K$. Then, each $f(V_i)$ is an element of $\mathcal{U}$, and $\{f(V_i)\}_{i=1}^{n}$ is a cover of $f(K)$. Thus, $\{f(V_1),...,f(V_n)\}\subset \mathcal{U}$ is a finite subcover of $f(K)$. \qed
+
+\begin{theorem}
+    A compact subset of a hausdorff space is closed.
+\end{theorem}
+    \noindent
+    \textbf{Proof.} Let $K\subset Y$ be compact. Let $p\in K^c$ be a point. Since $Y$ is hausdorff, for each $k\in K$, there is a pair of disjoint open sets $U_k, V_k\subset Y$ so that $k\in U_k$ and $p\in V_k$. The collection $\{U_k\}_{k\in K}$ is an open cover of $K$, and thus has a finite subcover $U_1,...,U_n$, which corresponds to a finite list $V_1,...,V_k$ of open sets that contain $p$. Let $V_p:=\cap_{i=1}^n V_i$. $V_p$ is an open set that contains $p$, and for each $k\in K$, we have $k\notin V_i$ for some $i$, so $k\notin V$. Thus, $V\subset K^c$. Since each point $p\in K^c$  has an open set $V_p\subset K^c$ containing it, $K^c$ is open. Hence, $K$ is closed. \qed
+    
+
+\begin{theorem}
     Let $X$ be compact and $Y$ be hausdorff. A continuous bijection $f:X\rightarrow Y$ is a homeomorphism.
 \end{theorem}
     \noindent
-    \textbf{Proof.} It suffices to show that $f^{-1}$ is continuous. Let $A\subset X$ be an open set. Let $y\in f(A)$. 
-
-
+    \textbf{Proof.} We must show that $g=f^{-1}:Y\rightarrow X$ is continuous. Let $A\subset X$ be a closed set. Since $X$ is compact, the closed subset $A$ is compact. Since $f$ is continuous, $f(A)$ is compact. Since $Y$ is hausdorff, $f(A)$ is closed. So, $g^{-1}(A)=f(A)$ is closed. Hence, $g$ is continuous. \qed
 \newpage
 
-
-\section{Abstract Algebra}
+\section{Analysis}
 \setcounter{subsection}{-1}
 \subsection{Definitions}
+\begin{definition}[Sequence]
+    Let $A$ be a set. A \textit{sequence} on $A$ is a map $f:\mathbb{N}\rightarrow A$, typically denoted $(a_n)$, whose $n$-th element is written $a_n:=f(n)$.
+\end{definition}
 
-\begin{definition}
+
+
+\section{Algebra}
+\setcounter{subsection}{-1}
+
+\subsection{Definitions}
+
+\begin{definition}[Group]
     Let $G$ be a set. Let $\circ$ be an operation on $G$. The pair $(G,\circ)$ is called a \textit{group} if the following are true:
     \begin{itemize}
         \item There exists an element $e \in G$ so that $e\circ g = g \circ e = g$ for any $g\in G$, called the \textit{identity}
@@ -252,20 +270,43 @@
     \end{itemize}
     The operation $\circ$ is often omitted.
 \end{definition}
-    
+\begin{definition}[Abelian Group]
+    A group $(G,+)$ is called an \textit{abelian group} if $g+g'=g'+g$ for all $g,g'\in G$.
+\end{definition}
+\begin{definition}[(Group) Homomorphism]
+    Let $G,H$ be groups. A map $\varphi: G\rightarrow H$ is called a \textit{group homomorphism} if, for all $g,g'\in G$, it satisfies $\varphi(gg')=\varphi(g)\varphi(g')$.
+\end{definition}
 
-\newpage
+\subsection{Linear Algebra}
+\setcounter{subsubsection}{-1}
+\subsubsection{Definitions}
+\begin{definition}[Vector Space]
+    Let $F$ be a field. A \textit{vector space} over $F$ is a an abelian group $(V,+)$ equipped with a binary function, $\cdot: V\times F\rightarrow F$, called scalar multiplication, satisfying the following axioms:
+    \begin{itemize}
+        \item $1\cdot v=v$ for all $v\in V$
+        \item $\lambda(v_1+v_2)=\lambda v+\lambda w$ for all $\lambda \in {F}, v_1,v_2\in V$
+        \item $(\lambda + \mu)v=\lambda v+\mu v$ for all $\lambda,\mu \in {F}, v \in V$
+        \item $\lambda(\mu v)=(\lambda \mu)v$ for all $\lambda, \mu\in {F}, v\in V$.
+    \end{itemize}
+\end{definition}
+\begin{definition}[Linear Map]
+    A \textit{linear map} between two vector spaces $V,W$ over a field $F$ is a map $T:V\rightarrow W$ satisfying $T(av+w)=aT(v)+T(w)$ for all $a\in F, v\in V, w\in W$.
+\end{definition}
+\begin{definition}[Tensor Product]
+    Let $V,W$ be two vector spaces over a field $F$. The \textit{tensor product} of $V$ and $W$, denoted $V\otimes W$, is a vector space over $F$ consisting of formal products $v\otimes w$, with $v\in V$ and $w\in W$, satisfying the following relations:
+    \begin{itemize}
+        \item $(\lambda v\otimes w)=(v\otimes \lambda w)=\lambda(v\otimes w)$ for $\lambda\in F, v\in V, w\in W$.
+        \item $(v_1+v_2)\otimes w = (v_1\otimes w) + (v_2\otimes w)$ for $v_1,v_2\in V, w\in W$.
+        \item $v\otimes (w_1+w_2) = (v\otimes w_1) + (v\otimes w_2)$ for $v\in V, w_1, w_2\in W$.
+    \end{itemize}
+\end{definition}
+
 \section{Representation Theory}
 \setcounter{subsection}{-1}
 \subsection{Definitions}
+\begin{definition}[Group Representation]
+    Let $G$ be a group and $V$ be a vector space over $\mathbb{C}$. A \textit{group representation} of $G$ in $V$ is a group homomorphism $\rho:G\rightarrow GL(V)$ from $G$ to the general linear group on $V$.
+\end{definition}
 
-
-\newpage
-\renewcommand{\appendixpagename}{Appendix}
-\appendixpage
-\appendix
-
-\section{Definition Index}
-\section{Notation}
 
 \end{document}
