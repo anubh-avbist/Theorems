@@ -111,5 +111,19 @@ Recall that the infimum and supremum distribute over the minkowski sums of sets.
     &=U(f+g,[a,b])\\
 \end{align*}
 Hence, $L(f+g,[a,b])=U(f+g,[a,b])=\int_{a}^{b}f+\int_{a}^{b}g$. \qed
+\newline
+\newline
+\noindent
+\textbf{5. }Suppose $f:[a,b]\rightarrow \mathbb{R}$ is Riemann integrable. Prove that $-f$ is Riemann integrable and that $\int_{a}^{b}(f)=-\int_{a}^{b}f$. 
+\begin{align*}
+    L(-f,[a,b])&=\underset{P}{\sup} \sum_{j=1}^{n} (x_j-x_{j-1})\underset{[x_{j-1},x_j]}{\inf} (-f)\\
+    &=-\underset{P}{\inf} -\sum_{j=1}^{n} (x_j-x_{j-1})(-\underset{[x_{j-1},x_j]}{\sup} (f))\\
+    &=-\underset{P}{\inf} \sum_{j=1}^{n} (x_j-x_{j-1})(\underset{[x_{j-1},x_j]}{\sup} (f))\\
+    &=-\int_{a}^{b}f\\
+    &=-\underset{P}{\sup} \sum_{j=1}^{n} (x_j-x_{j-1})(\underset{[x_{j-1},x_j]}{\inf} (f))\\
+    &=\underset{P}{\inf} -\sum_{j=1}^{n} (x_j-x_{j-1})(-\underset{[x_{j-1},x_j]}{\sup} (-f))\\
+    &=U(-f,[a,b])
+\end{align*}
+\qed
 
 \end{document}
