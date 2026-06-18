@@ -249,19 +249,22 @@
 \newpage
 
 \section{Analysis}
-\setcounter{subsection}{-1}
-\subsection{Definitions}
-\begin{definition}[Sequence]
-    Let $A$ be a set. A \textit{sequence} on $A$ is a map $f:\mathbb{N}\rightarrow A$, typically denoted $(a_n)$, whose $n$-th element is written $a_n:=f(n)$.
-\end{definition}
+    \setcounter{subsection}{-1}
+    \subsection{Definitions}
+    \begin{definition}[Sequence]
+        Let $A$ be a set. A \textit{sequence} on $A$ is a map $f:\mathbb{N}\rightarrow A$, typically denoted $(a_n)$, whose $n$-th element is written $a_n:=f(n)$.
+    \end{definition}
 
-
+    \subsection{Real Analysis}
+    \begin{theorem}[Mean Value Theorem]
+        Let $f$ be a continuous function on an interval $I:=[a,b]$, differentiable on $(a,b)$. There exists some $c\in(a,b)$ so that $f(b)-f(a)=f'(c)(b-a)$.
+    \end{theorem}
+    \newpage
 
 \section{Algebra}
+
 \setcounter{subsection}{-1}
-
 \subsection{Definitions}
-
 \begin{definition}[Group]
     Let $G$ be a set. Let $\circ$ be an operation on $G$. The pair $(G,\circ)$ is called a \textit{group} if the following are true:
     \begin{itemize}
@@ -272,7 +275,13 @@
     The operation $\circ$ is often omitted.
 \end{definition}
 \begin{definition}[Subgroup]
-    A subset $H$ of a group $(G,\circ)$ is called a \textit{subgroup} of $G$ if $a\circ b^{-1}\in H$ for all $a,b\in H$.
+    A \textit{subgroup} of a group $(G,\circ)$ is a non-empty subset $H\subset G$ that is a group under $\circ$.
+\end{definition}
+\begin{definition}[Order of A Group]
+    Let $G$ be a group. The \textit{order} of the group, denoted $|G|$, is the cardinality of the underlying set $G$.
+\end{definition}
+\begin{definition}[Order of A Group Element]
+    Let $G$ be a group written multiplicatively, and $g\in G$. The \textit{order} of $g$, denoted $|g|$ or $o(g)$, is the least positive integer $k$ so that $g^k=e_G$.
 \end{definition}
 \begin{definition}[Abelian Group]
     A group $(G,+)$ is called an \textit{abelian group} if $g+g'=g'+g$ for all $g,g'\in G$.
@@ -286,6 +295,23 @@
 \begin{definition}[Kernel]
     Let $\varphi:G\rightarrow H$ be a group homomorphism. The \textit{kernel} of $\varphi$ is all the elements of $G$ which map to the identity $e_H$. That is, $\text{ker }\varphi =\{g\in G: \varphi(g)=e_H\}$.
 \end{definition}
+\begin{definition}[Coset]
+    Let $H\subset G$ be a subgroup. The set $gH=\{gh:h\in H\}$ for each $g\in G$ is called a \textit{(left) coset} of $H$.
+\end{definition}
+
+\subsection{Group Theory}
+\begin{theorem}[Lagrange's Theorem]
+    Let $H$ be a subgroup of a finite group $G$. Then, $|H|$ divides $|G|$.
+\end{theorem}
+\noindent
+\textbf{Proof.} 
+Suppose two cosets $aH$ and $bH$ are not disjoint. So, there exist some $h_1,h_2\in H$ so that $ah_1=bh_2$. Thus, $a=b(h_2h_1^{-1})\in bH$. Therefore, $aH\subset bH$. A symmetric argument shows $bH\subset aH$, so the two cosets must coincide entirely. Thus, the cosets of $H$ form a partition of $G$. 
+\newline
+\newline
+Suppose there are $k$ different cosets of $H$, namely $a_1H,...,a_kH$.Consider the map $f:a_iH\rightarrow a_jH$ given by the rule $a_ih\mapsto a_jh$. This map is well defined since if $a_ih=a_ih'$, then $h=h'$. This map is clearly a surjection, since each $a_ij$ is mapped to by $a_ih\in a_iH$. If $f(a_ih)=f(a_ih')$, then since $a_jh=a_jh'$, we have $h=h'$, so $a_ih=a_ih'$. Hence, $f$ is also injective. Thus, there is a bijection between any two cosets of $H$, and each $a_iH$ has the same cardinality. 
+\newline
+\newline
+Since the cosets form a partition of $G$, we have $|G|=|a_1H|+...+|a_kH|=k|H|$. Thus, $|H|$ divides $|G|$. \qed
 
 \subsection{Linear Algebra}
 \setcounter{subsubsection}{-1}
