@@ -8,11 +8,14 @@
 \usepackage{caption}
 \usepackage{nameref}
 \usepackage{tikz-cd}
+\usepackage{parskip}
+\setlength{\parindent}{0pt}
 \usepackage[title,titletoc]{appendix}
 \usepackage[margin=0.75in]{geometry}
 \usepackage[fontsize=11pt]{scrextend}
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[subsection]
+\newtheorem{reformulation}{Reformulation}[subsection]
 \newtheorem{theorem}{Theorem}[subsection]
 
 \title{Unlimited Theorems}
@@ -151,7 +154,6 @@
     Let $f:A\rightarrow B$, $X\subset A$. Then, $f(X^\mathsf{c})=f(X)^\mathsf{c}$.
 \end{theorem}
 \noindent
-\newpage
 
 
 \section{Topology}
@@ -245,8 +247,7 @@
     Let $X$ be compact and $Y$ be hausdorff. A continuous bijection $f:X\rightarrow Y$ is a homeomorphism.
 \end{theorem}
     \noindent
-    \textbf{Proof.} We must show that $g=f^{-1}:Y\rightarrow X$ is continuous. Let $A\subset X$ be a closed set. Since $X$ is compact, the closed subset $A$ is compact. Since $f$ is continuous, $f(A)$ is compact. Since $Y$ is hausdorff, $f(A)$ is closed. So, $g^{-1}(A)=f(A)$ is closed. Hence, $g$ is continuous. \qed
-\newpage
+    \textbf{Proof.} We must show that $g=f^{-1}:Y\rightarrow X$ is continuous. Let $A\subset X$ be a closed set. Since $X$ is compact, the closed subset $A$ is compact. Since $f$ is continuous, $f(A)$ is compact. Since $Y$ is hausdorff, $f(A)$ is closed. So, $g^{-1}(A)=f(A)$ is closed. Hence, $g$ is continuous. \qed 
 
 \section{Analysis}
     \setcounter{subsection}{-1}
@@ -259,7 +260,6 @@
     \begin{theorem}[Mean Value Theorem]
         Let $f$ be a continuous function on an interval $I:=[a,b]$, differentiable on $(a,b)$. There exists some $c\in(a,b)$ so that $f(b)-f(a)=f'(c)(b-a)$.
     \end{theorem}
-    \newpage
 
 \section{Algebra}
 
@@ -325,6 +325,9 @@ Since the cosets form a partition of $G$, we have $|G|=|a_1H|+...+|a_kH|=k|H|$. 
         \item $\lambda(\mu v)=(\lambda \mu)v$ for all $\lambda, \mu\in {F}, v\in V$.
     \end{itemize}
 \end{definition}
+\begin{definition}[Direct Sum of Vector Spaces]
+    Let $V,W$ be vector spaces over a field $F$. The \textit{direct sum} of $V$ and $W$ is a vector space $V\oplus W$ over $F$ consisting of elements $(v,w)$ where $v\in V$ and $w\in W$.
+\end{definition}
 \begin{definition}[Linear Map]
     A \textit{linear map} between two vector spaces $V,W$ over a field $F$ is a map $T:V\rightarrow W$ satisfying $T(av+w)=aT(v)+T(w)$ for all $a\in F, v\in V, w\in W$.
 \end{definition}
@@ -341,7 +344,13 @@ Since the cosets form a partition of $G$, we have $|G|=|a_1H|+...+|a_kH|=k|H|$. 
 \setcounter{subsection}{-1}
 \subsection{Definitions}
 \begin{definition}[Group Representation]
-    Let $G$ be a group and $V$ be a vector space over $\mathbb{C}$. A \textit{group representation} of $G$ in $V$ is a group homomorphism $\rho:G\rightarrow GL(V)$ from $G$ to the general linear group on $V$. The dimension of $V$ is called the dimension or degree of the representation.
+    Let $G$ be a group and $V$ be a vector space over $\mathbb{C}$. A \textit{group representation} of $G$ in $V$ is a group homomorphism $\rho:G\rightarrow GL(V)$ from $G$ to the general linear group on $V$. The dimension of $V$ is called the dimension or degree of the representation. We typically denote $\rho_s$ instead of $\rho(s)$. (Sometimes we simply call $V$ the representation of $G$.)
+\end{definition}
+\begin{definition}[Subrepresentation]
+    Let $\rho:G\rightarrow GL(V)$ be a representation of $G$ in $V$. Suppose $W\subset V$ is a subspace so that for all $s\in G$, we have $\rho_s w\in W$ for all $w\in W$. Then, $W$ is said to be $G$\textit{-invariant}, and since each $\rho_s|_W$ is an isomorphism on $W$, the restriction $\rho|_W:G\rightarrow(GL(W))$ is a representation of $G$. In such a case, $W$ is called a \textit{subrepresentation} of $V$.
+\end{definition}
+\begin{definition}[Irreducible Representation]
+    A representation $\rho$ of $G$ in $V$ is called \textit{irreducible} if there exist no proper, non-trivial subrepresentations of $V$.
 \end{definition}
 \begin{definition}[Isomorphic Representations]
     Let $\rho$ and $\rho '$ be representations of a group $G$ in vector spaces $V$ and $V'$ respectively. $\rho$ and $\rho '$ are said to be \textit{isomorphic representations} if there exists a linear isomorphism $\tau: V\rightarrow V'$ so that $\tau\circ \rho = \rho ' \circ \tau$. In other words, there exists $\tau$ so that the following commutes:
@@ -352,6 +361,39 @@ Since the cosets form a partition of $G$, we have $|G|=|a_1H|+...+|a_kH|=k|H|$. 
     \end{tikzcd}
 \end{center}
 \end{definition}
+\begin{definition}[Character of a Representation]
+    Let $\rho$ be a representation. The scalar valued function $\chi_\rho:G\rightarrow \mathbb{C}$ given by $\chi_\rho(s):=\text{Tr}(\rho_s)$ is called the \textit{character} of $\rho$.
+\end{definition}
+\subsection{Complex Representations of Finite Groups}
+There is a very nice theory for classifying the representations of a group up to isomorphism. Analogous to how we express integers in a `canonical' form by decomposing uniquely into primes, we will decompose representations into irreducible representations (irreps).
+\newline
+\newline
+First, notice that given two representations $\rho^1:G\rightarrow GL(V)$ and $\rho^2:G\rightarrow GL(W)$, we can construct a new representation on $V\oplus W$ naturally. 
 
+\begin{theorem}
+Let $\rho:G\rightarrow GL(V)$ be a representation of $G$ in $V$, and let $W\subset V$ be a vector subspace of $V$ stable under $G$. Then there exists a complement $W^0$ of $W$ in $V$ which is stable under $G$.
+\end{theorem}
+\textit{Proof.} Let $W^0$ be a complement of $W$ in $V$, and let $p:V\rightarrow V$ be the projection of $V$ onto $W$ corresponding to the decomposition $V=W\oplus W^0$. We define a new projection $p^0:V\rightarrow V$:
+\begin{equation*}
+    p^0v:=\frac1{|G|}\sum_{s\in G}\rho_s p\rho_s^{-1}v.
+\end{equation*}
+Notice that $p$ maps to $W$ and $W$ is stable under $G$, so $\rho_sp$ sends elements to $W$. If $w\in W$, then $\rho_s^{-1}w\in W$. Hence,
+\begin{equation*}
+    p^0w=\frac1{|G|}\sum_{s\in G}\rho_s p\rho_s^{-1}w=\frac1{|G|}\sum_{s\in G}\rho_s \rho_s^{-1}w=w.
+\end{equation*} 
+So, $p^0$ is a projection of $V$ to $W$.
+\newline
+\newline
+Let $x\in W^0$. Then, $p^0\rho_s x=\frac1{|G|}\sum_{s\in G}\rho_s p\rho_s^{-1}\rho_s x=\frac1{|G|}\sum_{s\in G}\rho_s px=0$. Since $p^0(\rho_s x)=0$ for any $x\in W^0$, we have $\rho_s x\in W^0$. Hence, $W^0$ is stable under $G$. \qed
+
+Since an irreducible representation has no proper non-trivial subrepresentations, we can reformulate the deifnition:
+\begin{reformulation}[Irreducible Representation]
+    A representation is \textit{irreducible} if it cannot be expressed as the direct sum of two representations (aside from the trivial decomposition $V=V\oplus 0$).
+\end{reformulation}
+Theorem 5.1.1 also demonstrates (by induction on the dimension) that any representation may be expressed as a direct sum of irreducible representations. Now we attempt to show that this is `unique' in some sense.
+\begin{reformulation}
+    Two representations are isomorphic if and only if they have the same decomposition into irreducible representations up to isomorphism and reordering of the direct sums.
+\end{reformulation}
+Since we know all representations can be identified by their decomposition into irreps, the natural next question is to determine what all the irreducible representations of a group are. 
 
 \end{document}
