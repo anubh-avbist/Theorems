@@ -298,6 +298,12 @@
 \begin{definition}[Coset]
     Let $H\subset G$ be a subgroup. The set $gH=\{gh:h\in H\}$ for each $g\in G$ is called a \textit{(left) coset} of $H$.
 \end{definition}
+\begin{definition}[Conjugacy Class]
+    Let $g\in G$. The \textit{conjugacy class} of $g$ is the set $cl(g)=\{hgh^{-1}:h\in G\}$.
+\end{definition}
+\begin{definition}[Class Function]
+    A function $f:G\rightarrow K$ from a group $G$ to a field $K$ is called a \textit{class function} if it is constant on the conjugacy classes of $G$, or, equivalently, $f(ghg^{-1})=f(h)$ for all $g,h\in G$.
+\end{definition}
 
 \subsection{Group Theory}
 \begin{theorem}[Lagrange's Theorem]
@@ -368,7 +374,7 @@ Since the cosets form a partition of $G$, we have $|G|=|a_1H|+...+|a_kH|=k|H|$. 
 There is a very nice theory for classifying the representations of a group up to isomorphism. Analogous to how we express integers in a `canonical' form by decomposing uniquely into primes, we will decompose representations into irreducible representations (irreps).
 \newline
 \newline
-First, notice that given two representations $\rho^1:G\rightarrow GL(V)$ and $\rho^2:G\rightarrow GL(W)$, we can construct a new representation on $V\oplus W$ naturally. 
+First, notice that given two representations $\rho^1:G\rightarrow GL(V)$ and $\rho^2:G\rightarrow GL(W)$, we can construct a new representation on $V\oplus W$ naturally. We can also go the other way:
 
 \begin{theorem}
 Let $\rho:G\rightarrow GL(V)$ be a representation of $G$ in $V$, and let $W\subset V$ be a vector subspace of $V$ stable under $G$. Then there exists a complement $W^0$ of $W$ in $V$ which is stable under $G$.
@@ -391,9 +397,39 @@ Since an irreducible representation has no proper non-trivial subrepresentations
     A representation is \textit{irreducible} if it cannot be expressed as the direct sum of two representations (aside from the trivial decomposition $V=V\oplus 0$).
 \end{reformulation}
 Theorem 5.1.1 also demonstrates (by induction on the dimension) that any representation may be expressed as a direct sum of irreducible representations. Now we attempt to show that this is `unique' in some sense.
-\begin{reformulation}
+\begin{theorem}
     Two representations are isomorphic if and only if they have the same decomposition into irreducible representations up to isomorphism and reordering of the direct sums.
+\end{theorem}
+Since we know all representations can be identified by their decomposition into irreps, the natural next question is to determine what all the irreducible representations of a group are. For this, it is much nicer to talk about the characters of a representation.
+\subsubsection*{Character Theory}
+First, we must motivate the switch into talking about characters by showing that the character of a representation completely captures all of the information of a representation. That is, the character of a representation is a complete invariant. Let's build this up:
+\begin{theorem}
+    If $V_1$ and $V_2$ are representations with characters $\chi_1, \chi_2$, then the representation $V_1\oplus V_2$ has character $\chi_1+\chi_2$.
+\end{theorem}
+Since isomorphic representations can be identified by their decomposition into irreducibles, and since characters respect direct sums (by the theorem above), it suffices to show that isomorphic irreducible representations have the same character. But this is obvious, since two isomorphic representations simply differ by a change of basis, and trace is an invariant under change of basis. Hence,
+\begin{reformulation}[Isomorphic Representations]
+    Two representations are isomorphic if and only if they have the same character.
 \end{reformulation}
-Since we know all representations can be identified by their decomposition into irreps, the natural next question is to determine what all the irreducible representations of a group are. 
+The conjugacy invariance of the trace operator also demonstrates the following:
+\begin{theorem}
+    Characters are constant on the conjugacy classes.
+\end{theorem}
+Now we can simply talk about the characters of representations since they carry all of the information. Let's study the characters: How do we know a character corresponds to an irreducible representation? How many non-isomorphic characters are there? How do we find every irreducible character?
+\begin{theorem}[Orthogonality Relations of Characters]
+    Recall that $\langle \varphi, \psi \rangle= \frac1{|G|}\sum_{g\in G}^{} \varphi(g)\psi(g)^*$. Then, 
+    \begin{itemize}
+        \item A character $\chi$ is irreducible if and only if its norm $\langle \chi, \chi \rangle = \frac1{|G|}\sum_{g\in G}^{} \chi(g)\chi(g)^*$ is $1$.
+        \item Two nonisomorphic irreducible characters satisfy $\langle \chi_1,\chi_2 \rangle=0$. 
+    \end{itemize}
+\end{theorem}
+\begin{theorem}
+    The number of non-isomorphic irreducible characters (and, consequently, representations) is equal to the number of conjugacy classes.
+\end{theorem}
+\begin{theorem}
+    The regular representation of a group contains every irreducible representation with multiplicity equal to their degree.
+\end{theorem}
+
+
+
 
 \end{document}
