@@ -131,9 +131,21 @@ Hence, $L(f+g,[a,b])=U(f+g,[a,b])=\int_{a}^{b}f+\int_{a}^{b}g$. \qed
 \begin{equation*}
     \int_{a}^{b}g=\int_{a}^{b}g.
 \end{equation*}
-\textit{Proof.} Let $h:=g(x)-f(x)$ be a function defined on $[a,b]$. Since $g=f+h$, and $f$ is Riemann integrable, it suffices to show that $h$ is Riemann integrable. Let $x_1,...,x_n$ be the collection of all finitely many points so that $g(x_i)\neq f(x_i)$ for all $i$, given in increasing order.
+\textit{Proof.} Let $h:=g(x)-f(x)$ be a function defined on $[a,b]$. Since $g=f+h$, and $f$ is Riemann integrable, it suffices to show that $h$ is Riemann integrable. Let $x_1,...,x_n$ be the collection of all finitely many points so that $g(x_i)\neq f(x_i)$ for all $i$, given in increasing order. Moreover, let $C:=\underset{i=1,...,n}{\text{max}}|h(x_i)|$.
 \newline
 \newline
-Let $\epsilon>0$, and $N:=\ceil{\frac{b-a}\epsilon}$. Then, let $P_1:=\{y_0,y_1,...,y_N\}$ where $y_i=\text{min}\{a+i\epsilon,b\}$, and let $P_2:=\{a,x_1,...,x_n,b\}$. Consider the finer partition $P=P_1\cup P_2$.  
+Let $\epsilon>0$, and $N:=\ceil{\frac{b-a}\epsilon}$. Then, let $P_1:=\{a=y_0,y_1,...,y_N=b\}$ where $y_i=\text{min}\{a+i\epsilon,b\}$, and let $P_2:=\{a,x_1,...,x_n,b\}$. Consider the finer partition $P=P_1\cup P_2$, whose elements shall be indexed $a=z_0,z_1,z_2,...,z_M=b$. Since $h$ is 0 almost everywhere, $\inf h=0$ on every interval containing more than one point. Then, we have
+\begin{align*}
+    U(h,P,[a,b])-L(h,P,[a,b])&= \sum_{i=1}^{M}(z_{i}-z_{i-1})\underset{[z_{i-1},z_i]}{\sup} h- \sum_{i=1}^{M}(z_{i}-z_{i-1})\underset{[z_{i-1},z_i]}{\inf} h\\
+    &= \sum_{i=1}^{M}(z_{i}-z_{i-1})\underset{[z_{i-1},z_i]}{\sup} h\\
+    &\leq \sum_{i=1}^{M}\epsilon|\underset{[z_{i-1},z_i]}{\sup} h| &\text{(by construction of $P_1$)}
+\end{align*}
+Since $h$ is 0 almost everywhere, $\sup h$ is 0 on every interval $[z_{i-1},z_i]$ that does not contain some $x_j$. Let $m_1,...,m_n$ be the sequence so that $z_{m_j}=x_j$ for every $1\leq j \leq n$. Then,
+\begin{align*}
+    \sum_{i=1}^{M}\epsilon|\underset{[z_{i-1},z_i]}{\sup} h| &\leq\sum_{j=1}^{n}\epsilon(|\underset{[z_{m_j-1},z_{m_j}]}{\sup} h| +|\underset{[z_{m_j},z_{m_j+1}]}{\sup} h|)\\
+    &\leq\epsilon\sum_{j=1}^{n}(|\underset{[z_{m_j-1},z_{m_j}]}{\sup} h| +|\underset{[z_{m_j},z_{m_j+1}]}{\sup} h|)\\
+    &\leq\epsilon\sum_{j=1}^{n}(2C)=2Cn\epsilon
+\end{align*}
+Since $2Cn$ is constant and $\epsilon$ was arbitrary, we have found a partition so that $U(h,P,[a,b])-L(h,P[a,b])\leq \epsilon$ for each $\epsilon$. Hence, $h$ is Riemann integrable, and consequently, so is $g$. \qed
 
 \end{document}
