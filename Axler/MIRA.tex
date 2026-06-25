@@ -146,5 +146,24 @@ Notice that $\sup h$ is identically 0 on every interval $[z_{i-1},z_i]$ that doe
     &\leq \epsilon \cdot(nC)
 \end{align*}
 Since $nC$ is constant and $\epsilon$ was arbitrary, we have found a partition so that $U(h,P,[a,b])-L(h,P[a,b])\leq \epsilon$ for each $\epsilon$. Hence, $h$ is Riemann integrable, and consequently, so is $g$. \qed
-
+\newpage
+\textbf{7. }Suppose $f:[a,b]\rightarrow \mathbb{R}$ is a bounded function. For $n\in \mathbb{N}$, let $P_n$ denote the partition that divides $[a,b]$ into $2^n$ intervals of equal size. Prove that 
+\begin{equation*}
+    L(f,[a,b])=\underset{n\rightarrow\infty}{\lim} L(f,P_n,[a,b]) \text{ and }U(f,[a,b])=\underset{n\rightarrow\infty}{\lim} U(f,P_n,[a,b])
+\end{equation*}
+\textit{Proof. }We prove the statement for the lower integral. Let $\epsilon >0$. Since $L(f,[a,b])=\underset{P}\sup L(f,P,[a,b])$, there is some partition $P$ so that $|L(f,[a,b])-L(f,P,[a,b])|<\epsilon$. Let $a=x_0,x_1,...,x_m=b$ denote the partition of $P$. Let $\delta = \min\{(x_i-x_{i-1}:1\leq i \leq m)\}\cup\{\epsilon\}$. Let $N\in\mathbb{N}$ be so that $\frac{b-a}{N}<\delta$. Then, where $n>N$, consider the partition $Q=P\cup P_n$. 
+\newline
+\newline
+Since $Q$ is a refinement of $P$, we have $L(f,P,[a,b])\leq L(f,Q,[a,b])\leq L(f,[a,b])$. Moreover, since $L(f,[a,b])-L(f,P,[a,b])<\epsilon$, we have $L(f,Q,[a,b])-L(f,P,[a,b])<\epsilon$. 
+\newline
+\newline
+Let $M>0$ be so that $|f(x)|<M$ for all $x\in[a,b]$ (since $f$ is bounded). $P_n$ consists of intervals of size at most $\delta$. $Q$ is a refinement of $P_n$ obtained by adjoining the $m$ points of $P$, each of which splits one of the $\delta$-sized intervals. Each of these insertions contributes a difference of at most $\delta M$ from the lower sum of $L(f,P_n,[a,b])$. Thus, altogether, we have $|L(f,Q,[a,b])-L(f,P_n,[a,b])|\leq m\delta M$. Thus,
+\begin{align*}
+    &|L(f,P_n,[a,b])-L(f,[a,b])|\\
+    &=|L(f,P_n,[a,b])-L(f,Q,[a,b])+L(f,Q[a,b])-L(f,P,[a,b])+L(f,P,[a,b])-L(f,[a,b])|\\
+    &\leq|L(f,P_n,[a,b])-L(f,Q,[a,b])|+|L(f,Q[a,b])-L(f,P,[a,b])|+|L(f,P,[a,b])-L(f,[a,b])|\\
+    &\leq m\delta M + \epsilon + \epsilon\\
+    &\leq\epsilon(mM+2).
+\end{align*}
+Since $mM+2$ is constant and $\epsilon$ was arbitrary, we have found $N$ so that when $n>N$, we have $L(f,P_n,[a,b])$ is arbitrarily close to $L(f,[a,b])$. Hence, $ L(f,[a,b])=\underset{n\rightarrow\infty}{\lim} L(f,P_n,[a,b]) $. \qed
 \end{document}
