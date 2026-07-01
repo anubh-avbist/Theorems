@@ -203,7 +203,10 @@
         Let $X$ be a topological space. $X$ is called \textit{hausdorff} if, for any $x,y\in X$, if $x\neq y$, then there exist neighborhoods $U$ of $x$ and $V$ of $y$ so that $U$ and $V$ are disjoint.
     \end{definition}
     \begin{definition}[Homotopy]
-        Let $f,g:X\rightarrow Y$ be continuous functions. A \textit{homotopy} between $f$ and $g$ is a continuous map $H:X\times [0,1]\rightarrow Y$ satisfying $H(x,0)=f(x)$ and $H(x,1)=g(x)$ for all $x\in X$.
+        Let $f,g:X\rightarrow Y$ be continuous functions. A \textit{homotopy} between $f$ and $g$ is a continuous map $H:X\times [0,1]\rightarrow Y$ satisfying $H(x,0)=f(x)$ and $H(x,1)=g(x)$ for all $x\in X$. We say $f$ is homotopic to $g$.
+    \end{definition}
+    \begin{definition}[Null-Homotopic]
+        A continuous map is called \textit{null-homotopic} if it is homotopic to a constant function.
     \end{definition}
 
 
@@ -319,7 +322,12 @@
     \newline
     \newline
     If $aH=\alpha H$ and $bH =\beta H$, then we verify that $(ab)H=(\alpha\beta)H$. Let $abh\in abH$. Then, $abh=abhb^{-1}b=ah'b$ where $h'\in H$. But $ah'\in aH=\alpha H$, so $ah'=\alpha h''$ for some $h''\in H$. Hence, $abh=\alpha h'' b$. Similarly, $h'' b=bb^{-1}h''b=bh'''$ for some $h'''\in H$. So, $abh=\alpha bh'''\in\alpha bH=\alpha\beta H$, meaning $abh=\alpha\beta \tilde{h}$ for some $\tilde{h}\in H$. Thus, $abH\subset \alpha\beta H$. An identical calculation shows the reverse inclusion. 
-    
+\end{definition}
+\begin{definition}[Normal Closure]
+    Given a subset $S$ of a group $G$, the \textit{normal closure} $\text{ncl}_G(S)$ is the smallest normal subgroup of $G$ containing $S$.
+\end{definition}
+\begin{definition}[Presentation of A Group]
+    A \textit{presentation} of a group $G$ consists of a set of generators $S$ and a subset $R\subset G$ so that $G\cong \langle S \rangle/{\text{ncl}_G(S)}$, typically denoted $G=\langle S | R\rangle$. For each $r\in R$, we typically instead write the relation $r=e_G$ or an equivalent equation. For example, we can write $S_2$ as $\langle a | a^2=e\rangle$.
 \end{definition}
 
 \subsection{Group Theory}
@@ -331,7 +339,10 @@
     $G^*:=G\setminus \{0\}$ for $G=\mathbb{Q,R,C}$ is a group under $\times$ with identity $1$ and $a^{-1}=\frac{1}{a}$.
 \end{example}
 \begin{example}
-    $n\mathbb{Z}=\{nz:z\in\mathbb{Z}\}$ for $n\in\mathbb{Z}$ is a subgroup of $(\mathbb{Z},+)$.
+    $n\mathbb{Z}=\{nz:z\in\mathbb{Z}\}$ for $n\in\mathbb{Z}$ is a subgroup of $(\mathbb{Z},+)$. Moreover, $\mathbb{Z}/n\mathbb{Z}$ is a quotient group.
+\end{example}
+\begin{example}
+    The \textit{dihedral group} $D_{2n}$ is the group of symmetries on the $n$-sided polygon, given as $D_{2n}=\langle r,s | r^n=s^2=e, rs=sr^{-1}\rangle$, where $r$ represents a rotation by $2\pi/n$ and $s$ is a reflection across one of the axes of symmetry.
 \end{example}
 \subsubsection{Results}
 \begin{theorem}[Lagrange's Theorem]
@@ -421,11 +432,6 @@ Finally, we show that (4) $\implies$ (3). Let $\varphi:G\rightarrow G'$ be a hom
     Let $\rho$ be a representation. The scalar valued function $\chi_\rho:G\rightarrow \mathbb{C}$ given by $\chi_\rho(s):=\text{Tr}(\rho_s)$ is called the \textit{character} of $\rho$.
 \end{definition}
 \subsection{Complex Representations of Finite Groups}
-There is a very nice theory for classifying the representations of a group up to isomorphism. Analogous to how we express integers in a `canonical' form by decomposing uniquely into primes, we will decompose representations into irreducible representations (irreps).
-\newline
-\newline
-First, notice that given two representations $\rho^1:G\rightarrow GL(V)$ and $\rho^2:G\rightarrow GL(W)$, we can construct a new representation on $V\oplus W$ naturally. We can also go the other way:
-
 \begin{theorem}
 Let $\rho:G\rightarrow GL(V)$ be a representation of $G$ in $V$, and let $W\subset V$ be a vector subspace of $V$ stable under $G$. Then there exists a complement $W^0$ of $W$ in $V$ which is stable under $G$.
 \end{theorem}
@@ -442,29 +448,32 @@ So, $p^0$ is a projection of $V$ to $W$.
 \newline
 Let $x\in W^0$. Then, $p^0\rho_s x=\frac1{|G|}\sum_{s\in G}\rho_s p\rho_s^{-1}\rho_s x=\frac1{|G|}\sum_{s\in G}\rho_s px=0$. Since $p^0(\rho_s x)=0$ for any $x\in W^0$, we have $\rho_s x\in W^0$. Hence, $W^0$ is stable under $G$. \qed
 
-Since an irreducible representation has no proper non-trivial subrepresentations, we can reformulate the deifnition:
 \begin{reformulation}[Irreducible Representation]
     A representation is \textit{irreducible} if it cannot be expressed as the direct sum of two representations (aside from the trivial decomposition $V=V\oplus 0$).
 \end{reformulation}
-Theorem 5.1.1 also demonstrates (by induction on the dimension) that any representation may be expressed as a direct sum of irreducible representations. Now we attempt to show that this is `unique' in some sense.
+
 \begin{theorem}
     Two representations are isomorphic if and only if they have the same decomposition into irreducible representations up to isomorphism and reordering of the direct sums.
 \end{theorem}
-Since we know all representations can be identified by their decomposition into irreps, the natural next question is to determine what all the irreducible representations of a group are. For this, it is much nicer to talk about the characters of a representation.
+
 \subsubsection*{Character Theory}
-First, we must motivate the switch into talking about characters by showing that the character of a representation completely captures all of the information of a representation. That is, the character of a representation is a complete invariant. Let's build this up:
+\begin{theorem}
+    If $\chi$ is a character of degree $n$, then
+    \begin{itemize}
+        \item $\chi(1)=n$
+        \item $\chi(s^{-1})=\chi(s)^*$
+        \item $\chi(sts^{-1})=\chi(t)$
+    \end{itemize}
+\end{theorem}
 \begin{theorem}
     If $V_1$ and $V_2$ are representations with characters $\chi_1, \chi_2$, then the representation $V_1\oplus V_2$ has character $\chi_1+\chi_2$.
 \end{theorem}
-Since isomorphic representations can be identified by their decomposition into irreducibles, and since characters respect direct sums (by the theorem above), it suffices to show that isomorphic irreducible representations have the same character. But this is obvious, since two isomorphic representations simply differ by a change of basis, and trace is an invariant under change of basis. Hence,
 \begin{reformulation}[Isomorphic Representations]
     Two representations are isomorphic if and only if they have the same character.
 \end{reformulation}
-The conjugacy invariance of the trace operator also demonstrates the following:
 \begin{theorem}
     Characters are constant on the conjugacy classes.
 \end{theorem}
-Now we can simply talk about the characters of representations since they carry all of the information. Let's study the characters: How do we know a character corresponds to an irreducible representation? How many non-isomorphic characters are there? How do we find every irreducible character?
 \begin{theorem}[Orthogonality Relations of Characters]
     Recall that $\langle \varphi, \psi \rangle= \frac1{|G|}\sum_{g\in G}^{} \varphi(g)\psi(g)^*$. Then, 
     \begin{itemize}
@@ -477,6 +486,9 @@ Now we can simply talk about the characters of representations since they carry 
 \end{theorem}
 \begin{theorem}
     The regular representation of a group contains every irreducible representation with multiplicity equal to their degree.
+\end{theorem}
+\begin{theorem}
+    Let $\chi_1,...,\chi_j$ be all the nonisomorphic irreducible characters of representations of a group $G$, with degrees $n_1,...,n_j$. Then, $n_1^2+...+n_j^2=|G|$.
 \end{theorem}
 
 
