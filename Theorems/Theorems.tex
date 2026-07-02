@@ -12,7 +12,7 @@
 \setlength{\parindent}{0pt}
 \usepackage[title,titletoc]{appendix}
 \usepackage[margin=0.75in]{geometry}
-\usepackage[fontsize=11pt]{scrextend}
+\usepackage[fontsize=12pt]{scrextend}
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[subsection]
 \newtheorem{reformulation}{Reformulation}[subsection]
@@ -156,7 +156,6 @@
 \end{theorem}
 \noindent
 
-
 \section{Topology}
 \setcounter{subsection}{-1}
 \subsection{Definitions}
@@ -295,10 +294,11 @@
         \end{itemize}
     \end{theorem}
 
-\section{Algebra}
+\section{Abstract Algebra}
 
 \setcounter{subsection}{-1}
-\subsection{Definitions}
+\subsection{Group Theory}
+\subsubsection{Definitions}
 \begin{definition}[Group]
     Let $G$ be a set. Let $\circ$ be an operation on $G$. The pair $(G,\circ)$ is called a \textit{group} if the following are true:
     \begin{itemize}
@@ -359,8 +359,6 @@
 \begin{definition}[Presentation of A Group]
     A \textit{presentation} of a group $G$ consists of a set of generators $S$ and a subset $R\subset G$ so that $G\cong \langle S \rangle/{\text{ncl}_G(S)}$, typically denoted $G=\langle S | R\rangle$. For each $r\in R$, we typically instead write the relation $r=e_G$ or an equivalent equation. For example, we can write $S_2$ as $\langle a | a^2=e\rangle$.
 \end{definition}
-
-\subsection{Group Theory}
 \subsubsection{Examples}
 \begin{example}
     $\mathbb{Z,Q,R}$ and $\mathbb{C}$ are groups under $+$ with identity $0$ and $a^{-1}=-a$.
@@ -410,9 +408,46 @@ Now, suppose (3). Then, consider the projection $\pi: G\rightarrow G/H$ which se
 \newline
 Finally, we show that (4) $\implies$ (3). Let $\varphi:G\rightarrow G'$ be a homomorphism with $\text{ker }\varphi= H$, and let $g\in G$. Then, $\varphi(ghg^{-1})=\varphi(g)\varphi(h)\varphi(g^{-1})=\varphi(g)\varphi(g^{-1})=\varphi(gg^{-1})=\varphi(e)=e_{G'}$. So, $ghg^{-1}\in H$. Thus, (4) $\implies$ (1). \qed 
 
-\subsection{Linear Algebra}
-\setcounter{subsubsection}{-1}
+\subsection{Ring Theory}
 \subsubsection{Definitions}
+    \begin{definition}[Ring (with Unity)]
+        A \textit{ring} $R$ is a set equipped with two binary operations, $+$ and $\times$, so that the following are satisfied:
+        \begin{itemize}
+            \item $(R,+)$ is an abelian group
+            \item $\times$ is associative: $(a\times b)\times c = a\times(b\times c)$
+            \item Multiplication distributes over addition: $a\times(b+c)=a\times b + a\times c$, and $(a+b)\times c = a\times c + b\times c$ for all $a,b,c\in R$
+            \item $\exists 1\in R$ so that $1\times a = a\times 1 = a$ for all $a\in R$.
+        \end{itemize} 
+        Note that I will always assume rings to be unital in this document unless stated otherwise.
+    \end{definition}
+    \begin{definition}[Subring]
+        A subring of $R$ is a subgroup that is closed under multiplication.
+    \end{definition}
+    \begin{definition}[Commutative Ring]
+        A ring $R$ is called \textit{commutative} if $a\times b = b\times a$ for all $a,b\in R$.
+    \end{definition}
+    \begin{definition}[Zero Divisor]
+        A non-zero element $a\in R$ is called a \textit{zero divisor} if there is some nonzero element $b\in R$ so that $ab=0$.
+    \end{definition}
+    \begin{definition}[Unit in a Ring]
+        An element of a ring $r\in R$ is called a \textit{unit} if $\exists r^{-1}\in R$ so that $rr^{-1}=r^{-1}r=1$. The set of units in $R$ is denoted $R^\times$.
+    \end{definition}
+    \begin{definition}[Division Ring]
+        A ring $R$ is called a \textit{division ring} if $\forall a\in R\ \exists b\in R$ so that $ab=ba=1$.
+    \end{definition}
+    \begin{definition}[Integral Domain]
+        A commutative ring $R$ is called an \textit{integral domain} if there are no zero divisors, i.e. $ab=0\implies a=0$ or $b=0$.
+    \end{definition}
+    \begin{definition}[Ideal]
+        Let $R$ be a ring. A subset $I\subset R$ is called a \textit{left ideal} if $ra\in I$ for every $r\in R, a\in I$, and a \textit{right ideal} if $ar\in I$ for every $r\in R, a\in I$. A subset that is both a left and right ideal is simply called an \textit{ideal}.
+    \end{definition}
+    \begin{definition}[Field]
+        A \textit{field} is a commutative division ring.
+    \end{definition}
+
+\section{Linear Algebra}
+\setcounter{subsection}{-1}
+\subsection{Definitions}
 \begin{definition}[Vector Space]
     Let $F$ be a field. A \textit{vector space} over $F$ is a an abelian group $(V,+)$ equipped with a binary function, $\cdot: V\times F\rightarrow F$, called scalar multiplication, satisfying the following axioms:
     \begin{itemize}
@@ -520,8 +555,5 @@ Let $x\in W^0$. Then, $p^0\rho_s x=\frac1{|G|}\sum_{s\in G}\rho_s p\rho_s^{-1}\r
 \begin{theorem}
     Let $\chi_1,...,\chi_j$ be all the nonisomorphic irreducible characters of representations of a group $G$, with degrees $n_1,...,n_j$. Then, $n_1^2+...+n_j^2=|G|$.
 \end{theorem}
-
-
-
 
 \end{document}
