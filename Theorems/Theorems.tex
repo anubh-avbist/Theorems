@@ -46,7 +46,7 @@
 \tableofcontents
 \newpage
 
-\section{Logic}
+\section{Set Theory}
 
 \setcounter{subsection}{-1}
 \subsection{Definitions}
@@ -199,6 +199,9 @@
     \begin{definition}[Compact Space]
         Let $A\subset X$ be a subspace. $A$ is called \textit{compact} if for every open cover $B$ of $A$, there is an open subcover $C\subset B$ such that $C$ is finite.
     \end{definition}
+    \begin{definition}[Connected Space]
+        A topological space is called connected if it cannot be expressed as the union of two disjoint, non-empty open subsets.
+    \end{definition}
     \begin{definition}[Hausdorff Space]
         Let $X$ be a topological space. $X$ is called \textit{hausdorff} if, for any $x,y\in X$, if $x\neq y$, then there exist neighborhoods $U$ of $x$ and $V$ of $y$ so that $U$ and $V$ are disjoint.
     \end{definition}
@@ -253,16 +256,43 @@
     \noindent
     \textbf{Proof.} We must show that $g=f^{-1}:Y\rightarrow X$ is continuous. Let $A\subset X$ be a closed set. Since $X$ is compact, the closed subset $A$ is compact. Since $f$ is continuous, $f(A)$ is compact. Since $Y$ is hausdorff, $f(A)$ is closed. So, $g^{-1}(A)=f(A)$ is closed. Hence, $g$ is continuous. \qed 
 
+\begin{theorem}
+    Let $X$ be a topological space. The following are equivalent:
+    \begin{itemize}
+        \item $X$ is connected
+        \item Every continuous map from $X$ to the discrete two-point space is constant.
+    \end{itemize}
+\end{theorem}
+
 \section{Analysis}
     \setcounter{subsection}{-1}
     \subsection{Definitions}
     \begin{definition}[Sequence]
         Let $A$ be a set. A \textit{sequence} on $A$ is a map $f:\mathbb{N}\rightarrow A$, typically denoted $(a_n)$, whose $n$-th element is written $a_n:=f(n)$.
     \end{definition}
+    \begin{definition}[Metric Space]
+        A \textit{metric space} is a set $X$ equipped with a function $d:X\times X\rightarrow \mathbb{R}$ satisfying the following for all $x,y,z\in X$.
+        \begin{itemize}
+            \item $d(x,y)\geq 0$
+            \item $d(x,y)=0\iff x=y$
+            \item $d(x,y)=d(y,x)$
+            \item $d(x,y)+d(y,z)\geq d(x,z)$. (Triangle Inequality)
+        \end{itemize}
+    \end{definition}
+    \begin{definition}[Convergence of Real Sequences]
+        A sequence $(x_n)$ on a metric space $(X,d)$ is said to \textit{converge} to a point $x\in X$, if for all $\epsilon >0$ there is some natural number $N\in\mathbb{N}$ so that whenever $n> N$, we have $d(x_n,x) < \epsilon$.
+    \end{definition}
 
     \subsection{Real Analysis}
     \begin{theorem}[Mean Value Theorem]
         Let $f$ be a continuous function on an interval $I:=[a,b]$, differentiable on $(a,b)$. There exists some $c\in(a,b)$ so that $f(b)-f(a)=f'(c)(b-a)$.
+    \end{theorem}
+    \begin{theorem}[Cauchy Criterion for Convergence of Real Sequences]
+        Let $(x_n)$ be a sequence on a metric space $(X,d)$. The following are equivalent:
+        \begin{itemize}
+            \item $(x_n)$ converges
+            \item For all $\epsilon> 0$ there is some $N\in\mathbb{N}$ so that whenever $m,n>N$, we have $d(x_n,x_m)<\epsilon$.
+        \end{itemize}
     \end{theorem}
 
 \section{Algebra}
